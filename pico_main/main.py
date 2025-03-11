@@ -61,9 +61,9 @@ def handle_uart_input():
             data, _, received_data = received_data.partition('\n')  # Split at newline
             print("Received:", data)  # Print received data
             if data == "u":
-                return 0, 3  # Increase Y angle
+                return 0, 4  # Increase Y angle
             elif data == "d":
-                return 0, -3  # Decrease Y angle
+                return 0, -4  # Decrease Y angle
             elif data == "l":
                 return -5, 0  # Decrease X angle
             elif data == "r":
