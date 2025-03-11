@@ -49,20 +49,21 @@ def print_position():
             x, y = position_event.data
             
             # Check relative position
-            if x < processing_resolution[0] // 2 - 30:
+            # Add increment to check inside central 40/40 square instead of central point
+            if x < processing_resolution[0] // 2 - 40: 
                 uart.write("r\n".encode())
                 print("right")
-            elif x > processing_resolution[0] // 2 + 30:
+            elif x > processing_resolution[0] // 2 + 40:
                 uart.write("l\n".encode())
                 print("left")
         if position_event.wait():  # Wait until position event is set
             position_event.clear()  # Clear the event for next iteration
             x, y = position_event.data
             
-            if y < processing_resolution[1] // 2 - 30:
+            if y < processing_resolution[1] // 2 - 40:
                 uart.write("u\n".encode())
                 print("up")
-            elif y > processing_resolution[1] // 2 + 30:
+            elif y > processing_resolution[1] // 2 + 40:
                 uart.write("d\n".encode())
                 print("down")
 
